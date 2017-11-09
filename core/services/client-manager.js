@@ -32,7 +32,8 @@ proto.clearUpdateCheckCache = function(deploymentKey, appVersion, label, package
       });
     }
     return null;
-  });
+  })
+  .finally(() => client.quit());
 }
 
 proto.updateCheckFromCache = function(deploymentKey, appVersion, label, packageHash) {
@@ -62,11 +63,13 @@ proto.updateCheckFromCache = function(deploymentKey, appVersion, label, packageH
       return rs;
     });
   })
+  .finally(() => client.quit());
 }
 
 proto.updateCheck = function(deploymentKey, appVersion, label, packageHash) {
   var rs = {
     downloadURL: "",
+    downloadUrl: "",
     description: "",
     isAvailable: false,
     isMandatory: false,
@@ -98,6 +101,7 @@ proto.updateCheck = function(deploymentKey, appVersion, label, packageHash) {
         && _.eq(packages.deployment_id, deploymentsVersions.deployment_id)
         && !_.eq(packages.package_hash, packageHash)) {
         rs.downloadURL = common.getBlobDownloadUrl(_.get(packages, 'blob_url'));
+        rs.downloadUrl = common.getBlobDownloadUrl(_.get(packages, 'blob_url'));
         rs.description = _.get(packages, 'description', '');
         rs.isAvailable = true;
         rs.isMandatory = _.eq(packages.is_mandatory, 1) ? true : false;
@@ -117,6 +121,7 @@ proto.updateCheck = function(deploymentKey, appVersion, label, packageHash) {
         .then((diffPackage) => {
           if (!_.isEmpty(diffPackage)) {
             rs.downloadURL = common.getBlobDownloadUrl(_.get(diffPackage, 'diff_blob_url'));
+            rs.downloadUrl = common.getBlobDownloadUrl(_.get(diffPackage, 'diff_blob_url'));
             rs.packageSize = _.get(diffPackage, 'diff_size', 0);
           }
           return;

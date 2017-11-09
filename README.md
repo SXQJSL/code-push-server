@@ -1,5 +1,7 @@
 # CodePush Server [source](https://github.com/lisong/code-push-server) 
 
+[![NPM](https://nodei.co/npm/code-push-server.svg?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/code-push-server/)
+
 [![NPM Version](https://img.shields.io/npm/v/code-push-server.svg)](https://npmjs.org/package/code-push-server)
 [![Node.js Version](https://img.shields.io/node/v/code-push-server.svg)](https://nodejs.org/en/download/)
 [![Linux Status](https://img.shields.io/travis/lisong/code-push-server/master.svg?label=linux)](https://travis-ci.org/lisong/code-push-server)
@@ -27,12 +29,12 @@ api.code-push.com 只是一个测试server，不要将自己生产环境的项�
 ### shell命令行端
 
 ```shell
-$ code-push login http://api.code-push.com:8080 #登录
+$ code-push login http://api.code-push.com #登录
 ```
 
-### [web](http://www.code-push.com:8080) 
+### [web](http://www.code-push.com) 
 
-访问：http://www.code-push.com:8080
+访问：http://www.code-push.com
 
 ### 客户端eg.
 
@@ -222,11 +224,11 @@ edit config.xml. add code below.
 ```xml
 <platform name="android">
     <preference name="CodePushDeploymentKey" value="nVHPr6asLSusnWoLBNCSktk9FWbiqLF160UDg" />
-    <preference name="CodePushServerUrl" value="http://api.code-push.com:8080/" />
+    <preference name="CodePushServerUrl" value="http://api.code-push.com/" />
 </platform>
 <platform name="ios">
     <preference name="CodePushDeploymentKey" value="Iw5DMZSIrCOS7hbLsY5tHAHNITFQqLF160UDg" />
-    <preference name="CodePushServerUrl" value="http://api.code-push.com:8080/" />
+    <preference name="CodePushServerUrl" value="http://api.code-push.com/" />
 </platform>
 ```
 
